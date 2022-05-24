@@ -14,6 +14,7 @@ import static ru.javawebinar.topjava.util.TimeUtil.isBetweenHalfOpen;
 
 
 public class UserMealsUtil {
+
     public static void main(String[] args) {
         List<UserMeal> meals = Arrays.asList(
                 new UserMeal(LocalDateTime.of(2020, Month.JANUARY, 30, 10, 0), "Завтрак", 500),
@@ -30,6 +31,7 @@ public class UserMealsUtil {
 
         System.out.println(filteredByStreams(meals, LocalTime.of(10, 0), LocalTime.of(13, 0), 2000));
     }
+
     public static List<UserMealWithExcess> filteredByCycles(List<UserMeal> meals, LocalTime startTime, LocalTime endTime, int caloriesPerDay) {
         Map<LocalDate, Integer> mapOfCalorieAmountsByDate = new HashMap<>();
         for (UserMeal userMeal : meals) {
@@ -50,6 +52,7 @@ public class UserMealsUtil {
         }
         return userMealWithExcessList;
     }
+
     public static List<UserMealWithExcess> filteredByStreams(List<UserMeal> meals, LocalTime startTime, LocalTime endTime, int caloriesPerDay) {
         Map<LocalDate, Integer> mapOfCalorieAmountsByDate = meals.stream()
                 .collect(Collectors.groupingBy(userMeal -> userMeal.getDateTime().toLocalDate(), Collectors.summingInt(UserMeal::getCalories)));
