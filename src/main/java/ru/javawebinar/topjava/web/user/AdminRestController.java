@@ -2,12 +2,12 @@ package ru.javawebinar.topjava.web.user;
 
 import ru.javawebinar.topjava.model.User;
 
-import java.util.List;
+import java.util.Collection;
 
 public class AdminRestController extends AbstractUserController {
 
     @Override
-    public List<User> getAll() {
+    public Collection<User> getAll() {
         return super.getAll();
     }
 
